@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package financeiro;
+
+service TransacaoService {
+  rpc ListarTransacoes (ConsultaRequest) returns (TransacoesResponse);
+  rpc StreamTransacoes (ConsultaRequest) returns (stream Transacao);
+}
+
+message ConsultaRequest {
+  int32 limite = 1;
+  int32 offset = 2; // � Ponto de partida da leitura
+}
+
+message Transacao {
+  int32 id = 1;
+  string conta_origem = 2;
+  string conta_destino = 3;
+  double valor = 4;
+  string status = 5;
+  int64 timestamp = 6;
+}
+
+message TransacoesResponse {
+  repeated Transacao transacoes = 1;
+}
