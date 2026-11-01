@@ -2,10 +2,11 @@
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const { db, seed } = require('./database');
+const path = require('path');
 
 seed(10000);
 
-const packageDef = protoLoader.loadSync('transacoes.proto');
+const packageDef = protoLoader.loadSync(path.join(__dirname, '..', 'transacoes.proto'));
 const proto = grpc.loadPackageDefinition(packageDef).financeiro;
 
 // 1. Implementação Unária (similar ao REST: monta tudo e devolve)

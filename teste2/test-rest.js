@@ -7,7 +7,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://localhost:3000/transacoes?limite=10000&offset=0');
+  const res = http.get('http://192.168.0.247:3000/transacoes?limite=10000&offset=0');
   check(res, {
     'status 200': (r) => r.status === 200,
   });

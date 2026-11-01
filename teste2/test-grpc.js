@@ -16,7 +16,7 @@ export const options = {
 export default function () {
   // Conecta apenas se ainda não estiver conectado no ciclo deste VU
   if (!isConnected) {
-    client.connect('127.0.0.1:50051', { plaintext: true });
+    client.connect('192.168.0.247:50051', { plaintext: true });
     isConnected = true;
   }
   const response = client.invoke('financeiro.TransacaoService/ListarTransacoes', {
